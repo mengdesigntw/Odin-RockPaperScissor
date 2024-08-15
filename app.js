@@ -63,7 +63,7 @@ function deCaseSensitive(text) {
 }
 
 //decide who wins the whole game
-function isWinner(humanScore, computerScore) {
+function isWinner() {
   if (humanScore !== computerScore) {
     return humanScore > computerScore ? 'You win!' : 'You lose!';
   } else {
@@ -89,7 +89,7 @@ function playGame(roundNum) {
     console.log(`Human:${humanScore}, Computer:${computerScore}`);
   }
   console.log('//// Game Set ////');
-  console.log(isWinner(humanScore, computerScore));
+  console.log(isWinner());
   console.log(`Total run: ${roundNum}. Human:${humanScore}, Computer:${computerScore}.`);
   reset();
 }
