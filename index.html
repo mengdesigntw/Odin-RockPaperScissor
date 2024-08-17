@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./styles.css" />
-    <script type="text/javascript" src="./app.js"></script>
+    <script type="text/javascript" src="./app.js" defer></script>
   </head>
   <body>
     <div class="main">
@@ -15,44 +15,45 @@
       </div>
       <div class="score-board">
         <div class="score-card">
-          <div>Your Score: <span class="score">1</span></div>
+          <div>Your Score: <span class="score human emphasis">1</span></div>
         </div>
         <div class="score-card">
-          <div>Computer Score: <span class="score">2</span><span class="winner">Winner!</span></div>
+          <div>Computer Score: <span class="score computer emphasis">2</span><span class="winner">Winner!</span></div>
         </div>
       </div>
       <div class="buttons">
-        <button>👊 Rock</button>
-        <button>✋ Papper</button>
-        <button>✌️ Scissor</button>
+        <button id="rock">👊 Rock</button>
+        <button id="paper">✋ Paper</button>
+        <button id="scissor">✌️ Scissor</button>
       </div>
       <div class="play-history">
-        <div class="play-round">
+        <!-- <div class="play-round">
           <div class="round-data">
-            <h5>Round 1</h5>
+            <h5>Round <span class="round-num">1</span></h5>
             <div class="player-choice">
-              <div class="choice">You: <span>👊 Rock</span></div>
-              <div class="choice">Computer: <span>✋ Papper</span></div>
+              <div>You: <span class="emphasis">👊 Rock</span></div>
+              <div>Computer: <span class="emphasis">✋ Papper</span></div>
             </div>
           </div>
           <div class="round-winner">
             <h5>Winner</h5>
-            <div><span>Computer</span></div>
+            <div class="emphasis">Computer</div>
           </div>
         </div>
+
         <div class="play-round">
           <div class="round-data">
-            <h5>Round 1</h5>
+            <h5>Round <span>1</span></h5>
             <div class="player-choice">
-              <div class="choice">You: <span>👊 Rock</span></div>
-              <div class="choice">Computer: <span>✋ Papper</span></div>
+              <div>You: <span class="emphasis">👊 Rock</span></div>
+              <div>Computer: <span class="emphasis">✋ Papper</span></div>
             </div>
           </div>
           <div class="round-winner">
             <h5>Winner</h5>
-            <div><span>Computer</span></div>
+            <div><span class="emphasis">Computer</span></div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </body>

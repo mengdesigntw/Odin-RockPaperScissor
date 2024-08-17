@@ -44,9 +44,6 @@ body {
 
 .score {
   margin-right: 1rem;
-  color: black;
-  font-weight: 600;
-  font-size: 1.25rem;
 }
 
 .winner {
@@ -70,6 +67,10 @@ button {
   flex: 1 1 0;
 }
 
+button:disabled {
+    opacity: 0.3;
+}
+
 .play-history {
   display: flex;
   flex-direction: column;
@@ -87,16 +88,11 @@ button {
 }
 
 .round-data {
-  flex: 1 1 auto;
+  min-width: 320px;
+  flex: 2 1 0;
 }
 .round-winner {
-  flex: 1 1 auto;
-}
-
-.play-round span {
-  color: black;
-  font-weight: 600;
-  font-size: 1.25rem;
+  flex: 1 1 0;
 }
 
 .play-round h5 {
@@ -106,4 +102,10 @@ button {
 .player-choice {
   display: flex;
   gap: 1.5rem;
+}
+
+.emphasis {
+  color: black;
+  font-weight: 600;
+  font-size: 1.25rem;
 }
