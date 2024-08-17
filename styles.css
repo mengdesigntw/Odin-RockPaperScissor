@@ -30,15 +30,14 @@ body {
 
 .score-board {
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
 .reset {
-    flex: 1 1 auto;
-    background-color: rgb(161, 206, 225);
-    color: black;
-    font-size: 1rem;
+  flex: 1 1 auto;
+  font-size: 1rem;
+  padding: 0.75rem 0;
 }
 
 .scores {
@@ -71,20 +70,20 @@ body {
 }
 
 .buttons {
-    min-height: 60px;
+  min-height: 60px;
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
 }
 
 button {
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem;
   background-color: rgb(16, 88, 120);
   border-style: none;
   color: white;
   border-radius: 0.5rem;
   font-size: 1.25rem;
-  flex: 1 1 9rem;
+  flex: 1 1 0;
 }
 
 button:disabled {
@@ -112,6 +111,7 @@ button:disabled {
 }
 .round-winner {
   flex: 1 1 0;
+  min-width: 6.2rem;
 }
 
 .play-round h5 {
@@ -121,11 +121,14 @@ button:disabled {
 .player-choice {
   display: flex;
   flex-wrap: wrap;
-  gap: .25rem;
+  gap: 0.25rem;
 }
 
-.player-choice :first-child{
-    min-width: 9.5rem;
+.player-choice :first-child {
+  min-width: 9.5rem;
+}
+.player-choice :last-child {
+  min-width: 11.125rem;
 }
 
 .emphasis {
