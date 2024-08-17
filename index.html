@@ -1,12 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
     <script type="text/javascript" src="./app.js"></script>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <div class="main">
+      <div class="heading">
+        <h1>Rock Papper Scissor</h1>
+        <p>First person got 5 points won!</p>
+      </div>
+      <div class="score-board">
+        <div class="score-card">
+          <h3>Your Score: <span id="human-score">1</span></h3>
+        </div>
+        <div class="score-card">
+          <h3>Computer Score: <span id="computer-score">2</span></h3>
+        </div>
+      </div>
+      <div class="buttons">
+        <button>👊 Rock</button>
+        <button>✋ Papper</button>
+        <button>✌️ Scissor</button>
+      </div>
+      <div class="play-history">
+        <div class="play-round">
+          <div class="round-data">
+            <h5>Round 1</h5>
+            <div class="player-choice">
+              <div class="choice">You: <span>👊 Rock</span></div>
+              <div class="choice">Computer: <span>✋ Papper</span></div>
+            </div>
+          </div>
+          <div class="round-winner">
+            <h5>Winner</h5>
+            <div><span>Computer</span></div>
+          </div>
+        </div>
+        <div class="play-round">
+          <div class="round-data">
+            <h5>Round 1</h5>
+            <div class="player-choice">
+              <div class="choice">You: <span>👊 Rock</span></div>
+              <div class="choice">Computer: <span>✋ Papper</span></div>
+            </div>
+          </div>
+          <div class="round-winner">
+            <h5>Winner</h5>
+            <div><span>Computer</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
