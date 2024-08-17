@@ -62,7 +62,7 @@ body {
 .winner {
   color: green;
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .display {
@@ -70,19 +70,19 @@ body {
 }
 
 .buttons {
-  min-height: 60px;
+  /* min-height: 48px; */
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
 }
 
 button {
-  padding: 0.5rem;
+  padding: 0.75rem;
   background-color: rgb(16, 88, 120);
   border-style: none;
   color: white;
   border-radius: 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   flex: 1 1 0;
 }
 
@@ -111,7 +111,7 @@ button:disabled {
 }
 .round-winner {
   flex: 1 1 0;
-  min-width: 6.2rem;
+  min-width: 6.5rem;
 }
 
 .play-round h5 {
@@ -128,11 +128,11 @@ button:disabled {
   min-width: 9.5rem;
 }
 .player-choice :last-child {
-  min-width: 11.125rem;
+  min-width: 11.25rem;
 }
 
 .emphasis {
   color: black;
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
