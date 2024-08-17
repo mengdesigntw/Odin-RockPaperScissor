@@ -19,13 +19,18 @@ let computerScore = 0;
 
 //set event handler to each button and store value in variable
 const choices = document.querySelectorAll('#rock, #paper, #scissor');
+const resetBtn = document.querySelector('.reset');
+const isHumanWin = document.querySelector('.winner.human');
+const isComputerWin = document.querySelector('.winner.computer');
 
 //create a function see if it's game-set
-function checkGameSet(){
+function checkGameSet() {
   if (humanScore == 5 || computerScore == 5) {
     rock.disabled = true;
     paper.disabled = true;
     scissor.disabled = true;
+    resetBtn.classList.toggle('display');
+    humanScore > computerScore ? isHumanWin.classList.toggle('display') : isComputerWin.classList.toggle('display');
   }
 }
 
@@ -40,11 +45,11 @@ function playRound(humanChoice, computerChoice) {
     (humanChoice === 'Paper' && computerChoice === 'Rock')
   ) {
     humanScore += 1;
-    checkGameSet()
+    checkGameSet();
     return 'You';
   } else {
     computerScore += 1;
-    checkGameSet()
+    checkGameSet();
     return 'Computer';
   }
 }
@@ -59,6 +64,50 @@ const playHistory = document.querySelector('.play-history');
 //roundNum
 let i = 1;
 
+//helper Func
+function createElement(type, className, textContent) {
+  const element = document.createElement(type);
+  if (className) element.classList.toggle(className);
+  if (textContent) element.textContent = textContent;
+  return element;
+}
+
+function createPlayRoundUI(roundNum, humanValue, computerValue, winner) {
+  const playRoundUi = createElement('div', 'play-round');
+
+  const roundData = createElement('div', 'round-data');
+  playRoundUi.appendChild(roundData);
+
+  const roundWinner = createElement('div', 'round-winner');
+  playRoundUi.appendChild(roundWinner);
+
+  const roundHeading = createElement('h5', null, 'Round: ');
+  const roundNumElem = createElement('span', 'round-num', roundNum);
+  roundHeading.appendChild(roundNumElem);
+
+  const playerChoice = createElement('div', 'player-choice');
+  const humanChoiceUi = createElement('div', null, 'You: ');
+  const computerChoiceUi = createElement('div', null, 'Computer: ');
+
+  const humanChoice = createElement('span', 'emphasis', humanValue);
+  humanChoiceUi.appendChild(humanChoice);
+  playerChoice.appendChild(humanChoiceUi);
+
+  const computerChoice = createElement('span', 'emphasis', computerValue);
+  computerChoiceUi.appendChild(computerChoice);
+  playerChoice.appendChild(computerChoiceUi);
+
+  roundData.appendChild(roundHeading);
+  roundData.appendChild(playerChoice);
+
+  const winnerHeading = createElement('h5', null, 'Winner');
+  const winnerUi = createElement('div', 'emphasis', winner);
+  roundWinner.appendChild(winnerHeading);
+  roundWinner.appendChild(winnerUi);
+
+  return playRoundUi;
+}
+
 function handleClick(e) {
   //get the value from computer and human
   const humanValue = e.target.textContent; //👊 Rock
@@ -67,65 +116,41 @@ function handleClick(e) {
   const computerValueModified = computerValue.slice(2).trimStart(); //e.g. Paper
   //who is winner
   const winner = playRound(humanValueModified, computerValueModified);
-  //inside play round
-  const playRoundUi = document.createElement('div');
-  playRoundUi.classList.toggle('play-round');
-  const roundData = document.createElement('div');
-  roundData.classList.toggle('round-data');
-  const roundWinner = document.createElement('div');
-  roundWinner.classList.toggle('round-winner');
-  playRoundUi.appendChild(roundData);
-  playRoundUi.appendChild(roundWinner);
-  //inside round data
-  const roundHeading = document.createElement('h5');
-  roundHeading.textContent = 'Round: ';
-  const playerChoice = document.createElement('div');
-  playerChoice.classList.toggle('player-choice');
-  roundData.appendChild(roundHeading);
-  roundData.appendChild(playerChoice);
-  //inside round heading
-  const roundNum = document.createElement('span');
-  roundNum.classList.toggle('round-num');
-  roundNum.textContent = i;
-  i++;
-  roundHeading.appendChild(roundNum);
-  //inside player choice
-  const humanChoiceUi = document.createElement('div');
-  humanChoiceUi.textContent = 'You: ';
-  const computerChoiceUi = document.createElement('div');
-  computerChoiceUi.textContent = 'Computer: ';
-  playerChoice.appendChild(humanChoiceUi);
-  playerChoice.appendChild(computerChoiceUi);
-  //inside human choice ui
-  const humanChoice = document.createElement('span');
-  humanChoice.textContent = humanValue; //'👊 Rock'
-  humanChoice.classList.toggle('emphasis');
-  humanChoiceUi.appendChild(humanChoice);
-  //inside computer choice ui
-  const computerChoice = document.createElement('span');
-  computerChoice.textContent = computerValue;
-  computerChoice.classList.toggle('emphasis');
-  computerChoiceUi.appendChild(computerChoice);
-  //inside round winner
-  const h5 = document.createElement('h5');
-  h5.textContent = 'Winner';
-  const winnerUi = document.createElement('div');
-  winnerUi.classList.toggle('emphasis');
-  winnerUi.textContent = winner; // computer, you, ''
-  roundWinner.appendChild(h5);
-  roundWinner.appendChild(winnerUi);
+  //ui
+  const playRoundUi = createPlayRoundUI(i, humanValue, computerValue, winner);
   //append the play round inside the play history
   playHistory.appendChild(playRoundUi);
-
   //display score in the scoreboardUi
   computerScoreUi.textContent = computerScore;
   humanScoreUi.textContent = humanScore;
+  //add round num
+  i++;
 }
 
-choices.forEach(choice => {
+choices.forEach((choice) => {
   choice.addEventListener('click', handleClick);
-})
+});
 
+resetBtn.addEventListener('click', function () {
+  //enable the buttons
+  rock.disabled = false;
+  paper.disabled = false;
+  scissor.disabled = false;
+  //dismiss resetBtn and win text
+  resetBtn.classList.toggle('display');
+  humanScore > computerScore ? isHumanWin.classList.toggle('display') : isComputerWin.classList.toggle('display');
+  //reset score and display
+  humanScore = 0;
+  computerScore = 0;
+  computerScoreUi.textContent = computerScore;
+  humanScoreUi.textContent = humanScore;
+  //reset round num
+  i = 1;
+  //remove history
+  while (playHistory.firstChild) {
+    playHistory.removeChild(playHistory.firstChild);
+  }
+});
 // //reset the game
 // function reset() {
 //   humanScore = 0;
